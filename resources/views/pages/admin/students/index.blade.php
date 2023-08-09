@@ -18,6 +18,7 @@
                         <table class="table table-bordered text-center">
                             <thead>
                                 <tr>
+                                    <th>No</th>
                                     <th>ID</th>
                                     <th>Nama</th>
                                     <th>NIS</th>
@@ -30,19 +31,33 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($students as $student)
+                                @forelse ($students as $student)
                                     <tr>
+                                        <td>{{ $loop->first }}</td>
+                                        <td>{{ $student->id }}</td>
                                         <td>{{ $student->nama }}</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
+                                        <td>{{ $student->nis }}</td>
+                                        <td>{{ $student->email }}</td>
+                                        <td>{{ $student->tempat_lahir }}</td>
+                                        <td>{{ $student->tanggal_lahir }}</td>
+                                        <td>{{ $student->jenis_kelamin }}</td>
+                                        <td>{{ $student->angkatan }}</td>
+                                        <td>
+                                            <div class="row m-2">
+                                                <a href="#" class="btn btn-info mr-2">
+                                                    Edit
+                                                </a>
+                                                <form action="#">
+                                                    @csrf
+                                                    <a href="#" class="btn btn-danger">
+                                                        Hapus
+                                                    </a>
+                                                </form>
+                                            </div>
+                                        </td>
                                     </tr>
-                                @endforeach
+                                @empty
+                                @endforelse
                             </tbody>
                         </table>
                     </div>
