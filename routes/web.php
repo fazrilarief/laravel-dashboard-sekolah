@@ -19,3 +19,6 @@ Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
 Route::get('student', [StudentController::class, 'index'])->name('student');
 Route::resource('students', StudentController::class);
+
+Route::get('create', [StudentController::class, 'create'])->name('students.create');
+Route::post('create', [StudentController::class, 'store'])->name('students.store');
