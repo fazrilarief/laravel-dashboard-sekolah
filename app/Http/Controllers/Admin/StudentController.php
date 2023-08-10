@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Request\admin\Student as AdminStudent;
 use App\Models\Student;
 use Illuminate\Http\Request;
 
@@ -24,15 +25,18 @@ class StudentController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.admin.students.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(AdminStudent $request)
     {
-        //
+        $data = $request->all();
+        Student::create($data);
+
+        return redirect()->route('student')->with('success', 'Data user berhasil ditambahkan.');
     }
 
     /**
